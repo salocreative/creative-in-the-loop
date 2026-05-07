@@ -1,0 +1,5 @@
+# https://creativeintheloop.com/
+User-agent: *
+Allow: /
+
+Sitemap: https://creativeintheloop.com/sitemap.xml
