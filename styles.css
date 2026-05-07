@@ -871,9 +871,33 @@ hr{
   margin: 0;
   padding: 0 var(--pad-x);
   display: grid;
-  grid-template-columns: minmax(auto, 160px) 1fr;
+  grid-template-columns: minmax(160px, 240px) 1fr;
   gap: clamp(28px, 6vw, 72px);
   align-items: start;
+}
+
+.salo-aside{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.salo-logo-link{
+  display: block;
+  line-height: 0;
+  opacity: 0.98;
+  transition: opacity 0.2s ease;
+}
+
+.salo-logo-link:hover{
+  opacity: 1;
+}
+
+.salo-logo-img{
+  display: block;
+  width: clamp(140px, 36vw, 207px);
+  height: auto;
 }
 
 .salo-label{
@@ -882,7 +906,6 @@ hr{
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
-  padding-top: 4px;
 }
 
 .salo-body p{
