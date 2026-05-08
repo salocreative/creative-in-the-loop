@@ -222,6 +222,7 @@ nav{
   color: var(--body);
   border: 0.5px solid var(--border-em);
   box-shadow: none;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out), opacity 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .btn-outline:hover{
@@ -229,6 +230,7 @@ nav{
   color: var(--off-white);
   border-color: rgba(255,255,255,0.2);
   transform: translateY(-2px);
+  box-shadow: none;
 }
 
 .btn-outline:focus-visible{

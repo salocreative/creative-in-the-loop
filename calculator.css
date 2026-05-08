@@ -8,13 +8,26 @@
   width: 620px;
   max-height: calc(100vh - 32px);
   background: transparent;
-  overflow: visible;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .citl-cost-dialog::backdrop{
   background: rgba(13,13,13,0.85);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
+}
+
+.citl-cost-dialog__inner{
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: min(calc(100vh - 32px), 100%);
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .citl-cost-dialog__close{
@@ -34,12 +47,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+  transition: background 0.2s, color 0.2s, transform 0.25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
 .citl-cost-dialog__close:hover{
   background: rgba(40,40,40,0.98);
   color: var(--teal);
+  transform: translateY(-2px);
 }
 
 .citl-calc{
@@ -57,8 +72,12 @@
   font-size: 15px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  max-height: calc(100vh - 32px);
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
   border-radius: 12px;
   position: relative;
 }
@@ -426,36 +445,60 @@
   background: var(--teal);
   color: #0D0D0D;
   font-family: var(--font);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
-  padding: 12px 20px;
-  border-radius: 6px;
+  padding: 9px 20px;
+  border-radius: var(--radius-md, 6px);
   border: none;
   cursor: pointer;
   letter-spacing: 0.01em;
-  transition: opacity 0.2s;
   text-align: center;
+  transition: transform 0.25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 0.25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), opacity 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.citl-calc .cc-btn:hover{ opacity: 0.85; }
+.citl-calc .cc-btn:hover{
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0,184,150,0.28);
+}
+
+.citl-calc .cc-btn:focus-visible{
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
 
 .citl-calc .cc-btn--ghost{
   flex: 1;
   background: transparent;
   color: var(--cc-muted);
   font-family: var(--font);
-  font-size: 13px;
-  font-weight: 400;
-  padding: 12px 20px;
-  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 9px 20px;
+  border-radius: var(--radius-md, 6px);
   border: 0.5px solid var(--cc-border-em);
   cursor: pointer;
-  transition: border-color 0.2s, color 0.2s;
+  text-align: center;
+  box-shadow: none;
+  transition: transform 0.25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), box-shadow 0.25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1)), opacity 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .citl-calc .cc-btn--ghost:hover{
-  border-color: var(--cc-border-em);
+  opacity: 1;
   color: var(--off-white);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.citl-calc .cc-btn--ghost:focus-visible{
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.citl-calc .cc-btn--lg{
+  font-size: 15px;
+  padding: 16px 38px;
+  border-radius: var(--radius-lg, 8px);
 }
 
 .citl-calc .cc-btn--full{
@@ -537,5 +580,10 @@
   .citl-cost-dialog::backdrop{
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+  }
+  .citl-calc .cc-btn:hover,
+  .citl-calc .cc-btn--ghost:hover,
+  .citl-cost-dialog__close:hover{
+    transform: none;
   }
 }
