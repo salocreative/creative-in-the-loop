@@ -1,60 +1,7 @@
-/* Value calculator — scoped; loaded with modal embed */
+/* Value calculator — scoped (inline at bottom of page) */
 
-.citl-cost-dialog{
-  padding: 0;
-  border: none;
-  margin: auto;
-  max-width: calc(100vw - 32px);
-  width: 620px;
-  max-height: calc(100vh - 32px);
-  background: transparent;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.citl-cost-dialog::backdrop{
-  background: rgba(13,13,13,0.85);
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-
-.citl-cost-dialog__inner{
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 0;
-  max-height: min(calc(100vh - 32px), 100%);
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.citl-cost-dialog__close{
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  z-index: 3;
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: var(--radius-md, 6px);
-  background: rgba(26,26,26,0.95);
-  color: var(--off-white);
-  font-size: 22px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background 0.2s, color 0.2s, transform 0.25s var(--ease-out, cubic-bezier(0.16, 1, 0.3, 1));
-}
-
-.citl-cost-dialog__close:hover{
-  background: rgba(40,40,40,0.98);
-  color: var(--teal);
-  transform: translateY(-2px);
+.citl-calc-section{
+  padding: clamp(48px, 8vw, 88px) 0 clamp(64px, 12vw, 120px);
 }
 
 .citl-calc{
@@ -72,14 +19,8 @@
   font-size: 15px;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  border-radius: 12px;
-  position: relative;
+  max-width: 580px;
+  margin: 0 auto;
 }
 
 .citl-calc *{
@@ -96,7 +37,6 @@
 
 .citl-calc .cc-head{
   padding: 32px 36px 28px;
-  padding-right: 48px;
   border-bottom: 0.5px solid var(--cc-border);
 }
 
@@ -565,7 +505,7 @@
     padding-left: 20px;
     padding-right: 20px;
   }
-  .citl-calc .cc-head{ padding-right: 44px; }
+  .citl-calc .cc-head{ padding-right: 20px; }
   .citl-calc .cc-big-number{ font-size: 40px; }
   .citl-calc .cc-two-col{ grid-template-columns: 1fr; }
 }
@@ -577,13 +517,8 @@
   .citl-calc .cc-progress-bar{
     transition: none;
   }
-  .citl-cost-dialog::backdrop{
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
-  }
   .citl-calc .cc-btn:hover,
-  .citl-calc .cc-btn--ghost:hover,
-  .citl-cost-dialog__close:hover{
+  .citl-calc .cc-btn--ghost:hover{
     transform: none;
   }
 }

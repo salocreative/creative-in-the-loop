@@ -1,7 +1,15 @@
 (function(){
   var BOOKING_URL = 'https://cal.com/carlcahill/creative-in-the-loop';
+  var CALC_ID = 'citl-cost-calculator';
+
+  function calcRoot(){
+    return document.getElementById(CALC_ID);
+  }
 
   function goStep(n){
+    var root = calcRoot();
+    if (!root) return;
+
     if (n === 2){
       var tt = document.getElementById('teamType').value;
       if (!tt){ markError('teamType'); return; }
@@ -16,7 +24,7 @@
       clearError('outputQuality');
     }
 
-    document.querySelectorAll('#citl-cost-modal .cc-step').forEach(function(s){
+    root.querySelectorAll('.cc-step').forEach(function(s){
       s.classList.remove('is-active');
     });
     document.getElementById('step' + n).classList.add('is-active');
@@ -73,6 +81,9 @@
   }
 
   function calculateAndShow(name){
+    var root = calcRoot();
+    if (!root) return;
+
     var teamSize = parseInt(document.getElementById('teamSize').value, 10);
     var hoursWasted = parseInt(document.getElementById('hoursWasted').value, 10);
     var dayRate = parseInt(document.getElementById('dayRate').value, 10);
@@ -127,15 +138,24 @@
 
     document.getElementById('recommendationText').innerHTML = rec;
 
-    document.querySelectorAll('#citl-cost-modal .cc-step').forEach(function(s){
+    root.querySelectorAll('.cc-step').forEach(function(s){
       s.classList.remove('is-active');
     });
     document.getElementById('stepResults').classList.add('is-active');
     document.getElementById('progressBar').style.width = '100%';
+
+    var scrollOpts = { block: 'start' };
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      scrollOpts.behavior = 'smooth';
+    }
+    document.getElementById('stepResults').scrollIntoView(scrollOpts);
   }
 
   function restart(){
-    document.querySelectorAll('#citl-cost-modal .cc-step').forEach(function(s){
+    var root = calcRoot();
+    if (!root) return;
+
+    root.querySelectorAll('.cc-step').forEach(function(s){
       s.classList.remove('is-active');
     });
     document.getElementById('step1').classList.add('is-active');
@@ -143,14 +163,20 @@
     document.getElementById('userName').value = '';
     document.getElementById('userEmail').value = '';
     document.getElementById('userCompany').value = '';
-    document.querySelectorAll('#citl-cost-modal .cc-field.has-error').forEach(function(f){
+    root.querySelectorAll('.cc-field.has-error').forEach(function(f){
       f.classList.remove('has-error');
     });
+
+    var scrollOpts = { block: 'start' };
+    if (!window.matchMedia || !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      scrollOpts.behavior = 'smooth';
+    }
+    root.scrollIntoView(scrollOpts);
   }
 
   function init(){
-    var dlg = document.getElementById('citl-cost-modal');
-    if (!dlg) return;
+    var root = calcRoot();
+    if (!root) return;
 
     var teamSize = document.getElementById('teamSize');
     var hoursWasted = document.getElementById('hoursWasted');
@@ -188,25 +214,6 @@
       });
     }
     if (resultsRestart) resultsRestart.addEventListener('click', restart);
-
-    document.querySelectorAll('[data-open-cost-modal]').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        dlg.showModal();
-        var panel = dlg.querySelector('.citl-calc');
-        if (panel) panel.scrollTop = 0;
-      });
-    });
-
-    var closeBtn = dlg.querySelector('.citl-cost-dialog__close');
-    if (closeBtn){
-      closeBtn.addEventListener('click', function(){
-        dlg.close();
-      });
-    }
-
-    dlg.addEventListener('close', function(){
-      restart();
-    });
   }
 
   if (document.readyState === 'loading'){

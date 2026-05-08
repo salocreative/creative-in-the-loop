@@ -110,10 +110,9 @@
       <div class="nav-sub">A service from Salo</div>
     </div>
   </div>
-  <div class="nav-actions">
-    <button type="button" class="btn btn-outline" data-open-cost-modal>Calculate costs</button>
-    <a href="https://cal.com/carlcahill/creative-in-the-loop" class="btn" target="_blank" rel="noopener noreferrer">Book a call</a>
-  </div>
+  <!-- UPDATE: Replace href with your Calendly or booking link -->
+  <a href="https://cal.com/carlcahill/creative-in-the-loop" class="btn" target="_blank" rel="noopener noreferrer">Book a call</a>
+</nav>
 
 <main id="main-content">
 
@@ -125,10 +124,8 @@
   <div class="eyebrow">A service from Salo</div>
   <h1 class="display-hero">Your AI produces.<br>We make sure<br>it's <em>good.</em></h1>
   <p class="hero-sub">Most teams going in-house with AI get the speed. They don't get the quality. That gap is what we close.</p>
-  <div class="hero-cta-row">
-    <button type="button" class="btn btn-lg btn-outline" data-open-cost-modal>Calculate costs</button>
-    <a href="https://cal.com/carlcahill/creative-in-the-loop" class="btn btn-lg" target="_blank" rel="noopener noreferrer">Book a conversation</a>
-  </div>
+  <!-- UPDATE: Replace href with your Calendly or booking link -->
+  <a href="https://cal.com/carlcahill/creative-in-the-loop" class="btn btn-lg" target="_blank" rel="noopener noreferrer">Book a conversation</a>
   <div class="hero-rule">
     <div><div class="stat-n">3</div><div class="stat-l">Phases to a working engine</div></div>
     <div><div class="stat-n">3–5 wks</div><div class="stat-l">To completion</div></div>
@@ -379,11 +376,179 @@
     <div class="eyebrow">Let's talk</div>
     <h2 class="display-cta">Is this the right fit for you?</h2>
     <p>We're working with a small number of teams right now. Book a short call and we'll find out quickly whether this makes sense.</p>
-    <div class="cta-btn-row">
-      <a href="https://cal.com/carlcahill/creative-in-the-loop" class="btn btn-lg" target="_blank" rel="noopener noreferrer">Book a call</a>
-      <button type="button" class="btn btn-lg btn-outline" data-open-cost-modal>Calculate costs</button>
-    </div>
+    <!-- UPDATE: Replace href with your Calendly or booking link -->
+    <a href="https://cal.com/carlcahill/creative-in-the-loop" class="btn btn-lg" target="_blank" rel="noopener noreferrer">Book a call</a>
     <p class="cta-email">Prefer to email first? <a href="mailto:hello@salo.uk" target="_blank" rel="noopener noreferrer">hello@salo.uk</a></p>
+  </div>
+</div>
+
+<hr>
+
+<div class="wrap">
+  <div id="citl-cost-calculator" class="citl-calc-section reveal-on-scroll" aria-labelledby="citl-calc-title">
+    <div class="citl-calc">
+      <div class="cc-card">
+        <div class="cc-progress">
+          <div class="cc-progress-bar" id="progressBar" style="width:33%"></div>
+        </div>
+        <div class="cc-head">
+          <div class="cc-eyebrow">Value calculator</div>
+          <h2 id="citl-calc-title">What is inconsistent AI output costing you?</h2>
+          <p>Three questions. A personalised breakdown. Takes about a minute.</p>
+        </div>
+
+        <div class="cc-step is-active" id="step1">
+          <div class="cc-step-label">Step 1 of 3 — Your situation</div>
+          <div class="cc-field">
+            <label for="teamSize">How many people on your team use AI for creative work?</label>
+            <div class="cc-slider-value"><span id="teamVal">3</span> <span>people</span></div>
+            <div class="cc-slider-wrap">
+              <input type="range" id="teamSize" name="teamSize" min="1" max="20" value="3" aria-valuemin="1" aria-valuemax="20" aria-valuenow="3" aria-describedby="teamSize-desc">
+              <div class="cc-slider-labels" id="teamSize-desc"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
+            </div>
+          </div>
+          <div class="cc-field">
+            <label for="hoursWasted">How many hours per week does your team spend re-prompting or fixing AI output?</label>
+            <div class="cc-slider-value"><span id="hoursVal">4</span> <span>hrs / week</span></div>
+            <div class="cc-slider-wrap">
+              <input type="range" id="hoursWasted" name="hoursWasted" min="1" max="20" value="4" aria-valuemin="1" aria-valuemax="20" aria-valuenow="4" aria-describedby="hours-hint">
+              <div class="cc-slider-labels"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
+            </div>
+            <div class="cc-hint" id="hours-hint">Think about briefing time, corrections, inconsistency fixes, re-runs.</div>
+          </div>
+          <div class="cc-field" id="field-team-type">
+            <label for="teamType">What best describes your team?</label>
+            <select id="teamType" name="teamType">
+              <option value="">Select one</option>
+              <option value="agency">We're an agency</option>
+              <option value="brand">We're a brand or in-house team</option>
+              <option value="startup">We're a startup or scale-up</option>
+            </select>
+            <div class="cc-error">Please select an option.</div>
+          </div>
+          <div class="cc-btn-row">
+            <button type="button" class="cc-btn cc-btn--full cc-btn--lg" id="cc-step1-next">Continue</button>
+          </div>
+        </div>
+
+        <div class="cc-step" id="step2">
+          <div class="cc-step-label">Step 2 of 3 — Your costs</div>
+          <div class="cc-field" id="field-day-rate">
+            <label for="dayRate">What's the average day rate or daily cost of the people using AI for creative work?</label>
+            <select id="dayRate" name="dayRate">
+              <option value="">Select a range</option>
+              <option value="200">Under &pound;200 / day</option>
+              <option value="300">&pound;200&ndash;&pound;350 / day</option>
+              <option value="450">&pound;350&ndash;&pound;550 / day</option>
+              <option value="650">&pound;550&ndash;&pound;800 / day</option>
+              <option value="900">Over &pound;800 / day</option>
+            </select>
+            <div class="cc-hint">Use an average if your team has different levels. This stays private.</div>
+            <div class="cc-error">Please select a range.</div>
+          </div>
+          <div class="cc-field" id="field-output-quality">
+            <label for="outputQuality">How would you describe the quality of your current AI output?</label>
+            <select id="outputQuality" name="outputQuality">
+              <option value="">Select one</option>
+              <option value="poor">Inconsistent — rarely on brand</option>
+              <option value="mixed">Mixed — sometimes good, often not</option>
+              <option value="okay">Okay — but never quite right</option>
+              <option value="good">Mostly good — just want to go further</option>
+            </select>
+            <div class="cc-error">Please select one.</div>
+          </div>
+          <div class="cc-btn-row">
+            <button type="button" class="cc-btn--ghost" id="cc-step2-back">Back</button>
+            <button type="button" class="cc-btn" id="cc-step2-next">Continue</button>
+          </div>
+        </div>
+
+        <div class="cc-step" id="step3">
+          <div class="cc-step-label">Step 3 of 3 — Your details</div>
+          <div class="cc-gate-intro">
+            <p>Your results are ready. <strong>Enter your details below</strong> and we'll show you your personalised breakdown — including what Creative in the Loop would cost versus what you're currently losing.</p>
+          </div>
+          <div class="cc-field" id="field-name">
+            <label for="userName">Your name</label>
+            <input type="text" id="userName" name="userName" autocomplete="name" placeholder="Your name">
+            <div class="cc-error">Please enter your name.</div>
+          </div>
+          <div class="cc-field" id="field-email">
+            <label for="userEmail">Work email</label>
+            <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="you@company.com">
+            <div class="cc-error">Please enter a valid email address.</div>
+          </div>
+          <div class="cc-field" id="field-company">
+            <label for="userCompany">Company <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
+            <input type="text" id="userCompany" name="userCompany" autocomplete="organization" placeholder="Company">
+          </div>
+          <div class="cc-btn-row">
+            <button type="button" class="cc-btn--ghost" id="cc-step3-back">Back</button>
+            <button type="button" class="cc-btn cc-btn--lg" id="cc-step3-submit">See my results</button>
+          </div>
+        </div>
+
+        <div class="cc-step" id="stepResults">
+          <div class="cc-step-label">Your results</div>
+          <div class="cc-results-head">
+            <div class="cc-big-number" id="annualWaste">&pound;0</div>
+            <div class="cc-big-label">estimated annual cost of inconsistent AI output</div>
+            <div class="cc-big-sub" id="resultSub"></div>
+          </div>
+          <div class="cc-result-rows">
+            <div class="cc-result-row">
+              <span class="cc-row-label">Weekly hours lost to rework</span>
+              <span class="cc-row-value is-neg" id="r-weeklyHours"></span>
+            </div>
+            <div class="cc-result-row">
+              <span class="cc-row-label">Weekly cost of that time</span>
+              <span class="cc-row-value is-neg" id="r-weeklyCost"></span>
+            </div>
+            <div class="cc-result-row">
+              <span class="cc-row-label">Annual cost of rework alone</span>
+              <span class="cc-row-value is-neg" id="r-annualRework"></span>
+            </div>
+            <div class="cc-result-row">
+              <span class="cc-row-label">Estimated cost of substandard output</span>
+              <span class="cc-row-value is-neg" id="r-outputCost"></span>
+            </div>
+          </div>
+          <div class="cc-vs-block">
+            <div class="cc-vs-row">
+              <span class="cc-vs-label">Your current annual cost</span>
+              <span class="cc-vs-value" id="vs-current"></span>
+            </div>
+            <div class="cc-vs-divider"></div>
+            <div class="cc-vs-row">
+              <span class="cc-vs-label">Creative in the Loop setup (phases 1&ndash;2)</span>
+              <span class="cc-vs-value is-teal" id="vs-setup"></span>
+            </div>
+            <div class="cc-vs-row">
+              <span class="cc-vs-label">Flexi-Design ongoing (per year)</span>
+              <span class="cc-vs-value is-teal" id="vs-flexi"></span>
+            </div>
+            <div class="cc-vs-row">
+              <span class="cc-vs-label">Total investment year one</span>
+              <span class="cc-vs-value is-teal" id="vs-total"></span>
+            </div>
+            <div class="cc-vs-saving">
+              <div class="cc-saving-num" id="vs-saving"></div>
+              <div class="cc-saving-label">potential saving in year one</div>
+            </div>
+          </div>
+          <div class="cc-recommendation">
+            <div class="cc-rec-label">Our recommendation</div>
+            <p id="recommendationText"></p>
+          </div>
+          <button type="button" class="cc-btn cc-btn--full cc-btn--lg" id="cc-results-book" style="margin-bottom:10px;">Book a call with Carl</button>
+          <button type="button" class="cc-btn--ghost cc-btn--full" id="cc-results-restart">Start again</button>
+        </div>
+
+        <div class="cc-foot">
+          <p>Estimates are illustrative and based on typical team costs. Your actual figures will vary. Creative in the Loop is a service from <a href="https://salo.uk/" target="_blank" rel="noopener noreferrer">Salo</a>.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -401,175 +566,6 @@
 </footer>
 
 </div><!-- /.page -->
-
-<dialog id="citl-cost-modal" class="citl-cost-dialog" aria-labelledby="citl-calc-title">
-  <div class="citl-cost-dialog__inner">
-  <button type="button" class="citl-cost-dialog__close" aria-label="Close value calculator">&times;</button>
-  <div class="citl-calc">
-    <div class="cc-card">
-      <div class="cc-progress">
-        <div class="cc-progress-bar" id="progressBar" style="width:33%"></div>
-      </div>
-      <div class="cc-head">
-        <div class="cc-eyebrow">Value calculator</div>
-        <h2 id="citl-calc-title">What is inconsistent AI output costing you?</h2>
-        <p>Three questions. A personalised breakdown. Takes about a minute.</p>
-      </div>
-
-      <div class="cc-step is-active" id="step1">
-        <div class="cc-step-label">Step 1 of 3 — Your situation</div>
-        <div class="cc-field">
-          <label for="teamSize">How many people on your team use AI for creative work?</label>
-          <div class="cc-slider-value"><span id="teamVal">3</span> <span>people</span></div>
-          <div class="cc-slider-wrap">
-            <input type="range" id="teamSize" name="teamSize" min="1" max="20" value="3" aria-valuemin="1" aria-valuemax="20" aria-valuenow="3" aria-describedby="teamSize-desc">
-            <div class="cc-slider-labels" id="teamSize-desc"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
-          </div>
-        </div>
-        <div class="cc-field">
-          <label for="hoursWasted">How many hours per week does your team spend re-prompting or fixing AI output?</label>
-          <div class="cc-slider-value"><span id="hoursVal">4</span> <span>hrs / week</span></div>
-          <div class="cc-slider-wrap">
-            <input type="range" id="hoursWasted" name="hoursWasted" min="1" max="20" value="4" aria-valuemin="1" aria-valuemax="20" aria-valuenow="4" aria-describedby="hours-hint">
-            <div class="cc-slider-labels"><span>1</span><span>5</span><span>10</span><span>15</span><span>20</span></div>
-          </div>
-          <div class="cc-hint" id="hours-hint">Think about briefing time, corrections, inconsistency fixes, re-runs.</div>
-        </div>
-        <div class="cc-field" id="field-team-type">
-          <label for="teamType">What best describes your team?</label>
-          <select id="teamType" name="teamType">
-            <option value="">Select one</option>
-            <option value="agency">We're an agency</option>
-            <option value="brand">We're a brand or in-house team</option>
-            <option value="startup">We're a startup or scale-up</option>
-          </select>
-          <div class="cc-error">Please select an option.</div>
-        </div>
-        <div class="cc-btn-row">
-          <button type="button" class="cc-btn cc-btn--full cc-btn--lg" id="cc-step1-next">Continue</button>
-        </div>
-      </div>
-
-      <div class="cc-step" id="step2">
-        <div class="cc-step-label">Step 2 of 3 — Your costs</div>
-        <div class="cc-field" id="field-day-rate">
-          <label for="dayRate">What's the average day rate or daily cost of the people using AI for creative work?</label>
-          <select id="dayRate" name="dayRate">
-            <option value="">Select a range</option>
-            <option value="200">Under &pound;200 / day</option>
-            <option value="300">&pound;200&ndash;&pound;350 / day</option>
-            <option value="450">&pound;350&ndash;&pound;550 / day</option>
-            <option value="650">&pound;550&ndash;&pound;800 / day</option>
-            <option value="900">Over &pound;800 / day</option>
-          </select>
-          <div class="cc-hint">Use an average if your team has different levels. This stays private.</div>
-          <div class="cc-error">Please select a range.</div>
-        </div>
-        <div class="cc-field" id="field-output-quality">
-          <label for="outputQuality">How would you describe the quality of your current AI output?</label>
-          <select id="outputQuality" name="outputQuality">
-            <option value="">Select one</option>
-            <option value="poor">Inconsistent — rarely on brand</option>
-            <option value="mixed">Mixed — sometimes good, often not</option>
-            <option value="okay">Okay — but never quite right</option>
-            <option value="good">Mostly good — just want to go further</option>
-          </select>
-          <div class="cc-error">Please select one.</div>
-        </div>
-        <div class="cc-btn-row">
-          <button type="button" class="cc-btn--ghost" id="cc-step2-back">Back</button>
-          <button type="button" class="cc-btn" id="cc-step2-next">Continue</button>
-        </div>
-      </div>
-
-      <div class="cc-step" id="step3">
-        <div class="cc-step-label">Step 3 of 3 — Your details</div>
-        <div class="cc-gate-intro">
-          <p>Your results are ready. <strong>Enter your details below</strong> and we'll show you your personalised breakdown — including what Creative in the Loop would cost versus what you're currently losing.</p>
-        </div>
-        <div class="cc-field" id="field-name">
-          <label for="userName">Your name</label>
-          <input type="text" id="userName" name="userName" autocomplete="name" placeholder="Your name">
-          <div class="cc-error">Please enter your name.</div>
-        </div>
-        <div class="cc-field" id="field-email">
-          <label for="userEmail">Work email</label>
-          <input type="email" id="userEmail" name="userEmail" autocomplete="email" placeholder="you@company.com">
-          <div class="cc-error">Please enter a valid email address.</div>
-        </div>
-        <div class="cc-field" id="field-company">
-          <label for="userCompany">Company <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
-          <input type="text" id="userCompany" name="userCompany" autocomplete="organization" placeholder="Company">
-        </div>
-        <div class="cc-btn-row">
-          <button type="button" class="cc-btn--ghost" id="cc-step3-back">Back</button>
-          <button type="button" class="cc-btn cc-btn--lg" id="cc-step3-submit">See my results</button>
-        </div>
-      </div>
-
-      <div class="cc-step" id="stepResults">
-        <div class="cc-step-label">Your results</div>
-        <div class="cc-results-head">
-          <div class="cc-big-number" id="annualWaste">&pound;0</div>
-          <div class="cc-big-label">estimated annual cost of inconsistent AI output</div>
-          <div class="cc-big-sub" id="resultSub"></div>
-        </div>
-        <div class="cc-result-rows">
-          <div class="cc-result-row">
-            <span class="cc-row-label">Weekly hours lost to rework</span>
-            <span class="cc-row-value is-neg" id="r-weeklyHours"></span>
-          </div>
-          <div class="cc-result-row">
-            <span class="cc-row-label">Weekly cost of that time</span>
-            <span class="cc-row-value is-neg" id="r-weeklyCost"></span>
-          </div>
-          <div class="cc-result-row">
-            <span class="cc-row-label">Annual cost of rework alone</span>
-            <span class="cc-row-value is-neg" id="r-annualRework"></span>
-          </div>
-          <div class="cc-result-row">
-            <span class="cc-row-label">Estimated cost of substandard output</span>
-            <span class="cc-row-value is-neg" id="r-outputCost"></span>
-          </div>
-        </div>
-        <div class="cc-vs-block">
-          <div class="cc-vs-row">
-            <span class="cc-vs-label">Your current annual cost</span>
-            <span class="cc-vs-value" id="vs-current"></span>
-          </div>
-          <div class="cc-vs-divider"></div>
-          <div class="cc-vs-row">
-            <span class="cc-vs-label">Creative in the Loop setup (phases 1&ndash;2)</span>
-            <span class="cc-vs-value is-teal" id="vs-setup"></span>
-          </div>
-          <div class="cc-vs-row">
-            <span class="cc-vs-label">Flexi-Design ongoing (per year)</span>
-            <span class="cc-vs-value is-teal" id="vs-flexi"></span>
-          </div>
-          <div class="cc-vs-row">
-            <span class="cc-vs-label">Total investment year one</span>
-            <span class="cc-vs-value is-teal" id="vs-total"></span>
-          </div>
-          <div class="cc-vs-saving">
-            <div class="cc-saving-num" id="vs-saving"></div>
-            <div class="cc-saving-label">potential saving in year one</div>
-          </div>
-        </div>
-        <div class="cc-recommendation">
-          <div class="cc-rec-label">Our recommendation</div>
-          <p id="recommendationText"></p>
-        </div>
-        <button type="button" class="cc-btn cc-btn--full cc-btn--lg" id="cc-results-book" style="margin-bottom:10px;">Book a call with Carl</button>
-        <button type="button" class="cc-btn--ghost cc-btn--full" id="cc-results-restart">Start again</button>
-      </div>
-
-      <div class="cc-foot">
-        <p>Estimates are illustrative and based on typical team costs. Your actual figures will vary. Creative in the Loop is a service from <a href="https://salo.uk/" target="_blank" rel="noopener noreferrer">Salo</a>.</p>
-      </div>
-    </div>
-  </div>
-  </div>
-</dialog>
 
 <script src="main.js" defer></script>
 <script src="calculator.js" defer></script>
