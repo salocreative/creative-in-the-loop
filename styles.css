@@ -168,8 +168,10 @@ nav{
   z-index: 100;
   padding: 16px var(--pad-x);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   border-bottom: 0.5px solid var(--border);
   background: rgba(13,13,13,0.94);
 }
@@ -205,6 +207,48 @@ nav{
 .nav-sub{
   font-size: 11px;
   color: var(--muted);
+}
+
+.nav-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.btn-outline{
+  background: transparent;
+  color: var(--body);
+  border: 0.5px solid var(--border-em);
+  box-shadow: none;
+}
+
+.btn-outline:hover{
+  opacity: 1;
+  color: var(--off-white);
+  border-color: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.btn-outline:focus-visible{
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.hero-cta-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.cta-btn-row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
 }
 
 /* ============================================================
@@ -1042,6 +1086,14 @@ footer{
    ============================================================ */
 @media (max-width: 640px){
   nav{ padding: 14px 20px; }
+  .nav-actions{
+    flex: 1 1 100%;
+    justify-content: stretch;
+  }
+  .nav-actions .btn{
+    flex: 1;
+    text-align: center;
+  }
 
   .hero-rule{ gap: 24px; }
 
